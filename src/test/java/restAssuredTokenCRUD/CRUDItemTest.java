@@ -1,4 +1,4 @@
-package basicRestAssured;
+package restAssuredTokenCRUD;
 
 import io.restassured.response.Response;
 import org.json.JSONObject;
