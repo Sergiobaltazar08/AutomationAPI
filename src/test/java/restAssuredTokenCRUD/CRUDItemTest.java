@@ -10,18 +10,17 @@ import static org.hamcrest.Matchers.equalTo;
 public class CRUDItemTest {
 
     /*
-    *  given() --> configuration: headers/ params / auth / body
-    *  when() --> method : url
-    *  then() --> response: headers/ body / response code / msg code / etc
-    *             verification
-    *             extract
-    *  log
+    *   Get: token with authentication
+    *   Put: Item by ID
+    *   get: Item by ID
+    *   put: Update Item by ID
+    *   delete: Item by ID
     * */
     @Test
     public void CRUDItem(){
         JSONObject body = new JSONObject();
 
-        System.out.println("**** Get token ****");
+        System.out.println("**** GET TOKEN ****");
 
         Response response=given()
                 .auth()
@@ -43,7 +42,7 @@ public class CRUDItemTest {
 
 
 
-        System.out.println("**** Create Item ****");
+        System.out.println("**** CREATE ITEM ****");
         body.put("Content","Item-Sergio");
         response=given().header("Token",token)
                 .body(body.toString())
@@ -60,7 +59,7 @@ public class CRUDItemTest {
 
 
 
-        System.out.println("**** Get Item by ID ****");
+        System.out.println("**** GET ITEM BY ID ****");
 
         response=given().header("Token",token)
                 .body(body.toString())
@@ -77,7 +76,7 @@ public class CRUDItemTest {
 
 
 
-        System.out.println("**** Update Item by ID ****");
+        System.out.println("**** UPDATE ITEM BY ID ****");
 
         body.put("Content","Item-Sergio-Update");
         body.put("Checked",false);
@@ -97,7 +96,7 @@ public class CRUDItemTest {
 
 
         
-        System.out.println("**** Delete Item ****");
+        System.out.println("**** DELETE ITEM ****");
 
         response=given().header("Token",token)
                 .body(body.toString())
